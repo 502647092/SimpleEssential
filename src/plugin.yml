@@ -1,0 +1,44 @@
+name: SimpleProtect
+main: cn.citycraft.SimpleProtect.SimpleProtect
+website: http://ci.citycraft.cn:8800/jenkins/job/SimpleProtect/
+version: 0.0.2
+commands:
+  simpleessential:
+    description: 简单基础插件
+    aliases: [se,sme]
+    usage: §b使用/se help 查看帮助!
+    permission: se.*
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
+  tpa: 
+    description: 传送到目标玩家
+    aliases: [setps,smetpa]
+    usage: §b使用/tpa <player>传送到目标玩家!
+    permission: se.tpa
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
+  tphere: 
+    description: 邀请目标玩家
+    aliases: [tph]
+    usage: §b使用/tphere <player>邀请目标玩家!
+    permission: se.tphere
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
+  tpaccept: 
+    description: 接受传送或邀请
+    aliases: [tpok]
+    usage: §b使用/tpaccept 接受传送或邀请!
+    permission: se.tpaccept
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
+  tpdeny: 
+    description: 拒绝传送或邀请
+    aliases: [tono]
+    usage: §b使用/tpdeny 拒绝传送或邀请!
+    permission: se.tpdeny
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
+permissions: 
+  se.*: 
+    description: 简单基础插件所有权限!
+    default: op
+    children:
+      se.tpa: true
+      se.tphere: true
+      se.tpaccept: true
+      se.tpdeny: true

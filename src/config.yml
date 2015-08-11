@@ -1,0 +1,74 @@
+#本文件为保护插件的主配置文件
+version: 1.0
+#服务器名称
+servername: ''
+#插件名称
+pluginname: '&6[&b保护系统&6]&r'
+#登陆提示
+Tip: 
+  #是否开启
+  Enable: false
+  Message: 
+    - '&a服务器已开启保护功能！'
+    - '&c将会实时监控您的操作！'
+    - '&e挖矿请带上火把或药水！'
+
+#耕地保护配置 
+BreakFarm:
+  #是否开启
+  Enable: true
+  Tip: '&c服务器已开启耕地保护，请不要踩庄稼！'
+
+#爆炸保护配置 
+Explosion: 
+  #是否开启
+  Enable: true
+
+#高频红石检测
+HighRedstone: 
+  #是否开启
+  Enable: true
+  Maxevents: 35
+  Find: '&c发现高频红石 &3世界：%world% &d坐标： X:%x% Y:%y% Z:%z% §a已清理！'
+  Check: '&c高频红石数据监测 &5上述高频红石由 &6玩家：&a%player%& 6放置！'
+  Admin: '&c发现您放置高频红石,由于您是管理员,在服务器重启之前此高频将不会被清理,请用完后及时清理！'
+
+#防止无限夜视
+Nightvision: 
+  #是否开启
+  Enable: true
+  Tip: '&c为防止无限夜视作弊，已阻止挖矿，请插火把或用夜视药水！'
+
+#安全地狱门
+SafeNetherDoor: 
+  #是否开启
+  Enable: true
+  Tip: '&5为防止您卡在地狱门，现在将您传送回主城！'
+  Set: '&a新的传送点已设置！'
+  World: world
+  X: 0
+  Y: 70
+  Z: 0
+  
+#刷屏保护
+Spam: 
+  #是否开启
+  Enable: true
+  ChatWait: 3
+  SameChatWait: 8
+  CommandWait: 2
+  SameCommandWait: 3
+  MuteCheck: 3
+  MuteReset: 3
+  TooMuchChat: '请不要短时间内发送大量消息'
+  TooMuchSameChat: '请不要短时间内发送相同的信息'
+  TooMuchCommand: '请不要短时间内发送大量命令'
+  TooMuchSameCommand: '请不要短时间内发送相同的命令'
+  MuteOn: '&a已允许玩家 %player% &a聊天！'
+  MuteOff: '§c已禁止玩家 %player% §c聊天！'
+  OffLine: '&c玩家不存在或不在线！'
+  NotMute: '&c玩家未被禁言或不存在！'
+  AdminChatOn: '&a服务器已开启管理员聊天！'
+  AdminChatOff: '&c服务器已关闭管理员聊天！'
+  AdminChat: '&c服务器已开启管理员聊天！'
+  MuteMsg: '&c您由于多次刷屏已被禁言，请联系管理解禁！'

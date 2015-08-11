@@ -26,6 +26,7 @@ public class SimpleEssential extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
+
 		this.getLogger().info("");
 	}
 
