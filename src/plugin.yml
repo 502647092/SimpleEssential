@@ -1,7 +1,7 @@
-name: SimpleProtect
-main: cn.citycraft.SimpleProtect.SimpleProtect
-website: http://ci.citycraft.cn:8800/jenkins/job/SimpleProtect/
-version: 0.0.2
+name: SimpleEssential
+main: cn.citycraft.SimpleEssential.SimpleEssential
+website: http://ci.citycraft.cn:8800/jenkins/job/SimpleEssential/
+version: 1.0
 commands:
   simpleessential:
     description: 简单基础插件
