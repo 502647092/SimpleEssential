@@ -29,7 +29,7 @@ commands:
     permission-message: §c你没有 <permission> 的权限来执行此命令!
   tpdeny: 
     description: 拒绝传送或邀请
-    aliases: [tono]
+    aliases: [tpno]
     usage: §b使用/tpdeny 拒绝传送或邀请!
     permission: se.tpdeny
     permission-message: §c你没有 <permission> 的权限来执行此命令!

@@ -6,6 +6,9 @@ package cn.citycraft.SimpleEssential;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import cn.citycraft.SimpleEssential.config.Config;
+import cn.citycraft.SimpleEssential.handler.SimpleEssentialCommandHandler;
+import cn.citycraft.SimpleEssential.handler.teleport.TeleportControl;
+import cn.citycraft.SimpleEssential.listen.PlayerLocationListen;
 
 /**
  * @author 蒋天蓓
@@ -13,6 +16,7 @@ import cn.citycraft.SimpleEssential.config.Config;
  *         TODO
  */
 public class SimpleEssential extends JavaPlugin {
+	public TeleportControl tpcontrol;
 
 	@Override
 	public void onLoad() {
@@ -26,8 +30,9 @@ public class SimpleEssential extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-
-		this.getLogger().info("");
+		new SimpleEssentialCommandHandler();
+		tpcontrol = new TeleportControl(this);
+		getServer().getPluginManager().registerEvents(new PlayerLocationListen(this), this);
 	}
 
 }
