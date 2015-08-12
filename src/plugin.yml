@@ -33,12 +33,20 @@ commands:
     usage: §b使用/tpdeny 拒绝传送或邀请!
     permission: se.tpdeny
     permission-message: §c你没有 <permission> 的权限来执行此命令!
+  back: 
+    description: 回到上一个TP地点
+    aliases: [seback]
+    usage: §b使用/back 回到上一个TP地点!
+    permission: se.back
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
 permissions: 
-  se.*: 
-    description: 简单基础插件所有权限!
-    default: op
+  se.user: 
+    description: 简单基础插件玩家权限!
+    default: true
     children:
       se.tpa: true
       se.tphere: true
       se.tpaccept: true
       se.tpdeny: true
+      se.back: true
+

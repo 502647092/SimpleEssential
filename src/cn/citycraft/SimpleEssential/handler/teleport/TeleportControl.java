@@ -1,9 +1,11 @@
 /**
- * 
+ *
  */
 package cn.citycraft.SimpleEssential.handler.teleport;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import org.bukkit.Effect;
 import org.bukkit.Location;
@@ -15,14 +17,32 @@ import cn.citycraft.SimpleEssential.SimpleEssential;
 import cn.citycraft.SimpleEssential.config.Config;
 
 /**
- * @author 蒋天蓓
- *         2015年8月12日下午2:26:10
- *         传送控制类
+ * @author 蒋天蓓 2015年8月12日下午2:26:10 传送控制类
  */
 public class TeleportControl {
+	/**
+	 * 粒子发生器
+	 *
+	 * @param loc
+	 *            - 粒子产生的地点
+	 * @param range
+	 *            - 粒子的数量
+	 */
+	static void pEffect(Location loc, long range) {
+		int i;
+		if (range < 2) {
+			range = 2;
+		}
+		for (i = 0; i < range; i++) {
+			loc.getWorld().playEffect(loc, Effect.LAVA_POP, 10, 100);
+			loc.getWorld().playEffect(loc, Effect.PORTAL, 10, 100);
+		}
+	}
+
 	protected HashMap<Player, TeleportInfo> teleportList = new HashMap<Player, TeleportInfo>();
 	protected HashMap<Player, Location> lastlocList = new HashMap<Player, Location>();
 	private SimpleEssential plugin;
+
 	private int TpDelay = Config.getInstance().getInt("Teleport.delay", 3);
 
 	public TeleportControl(SimpleEssential plugin) {
@@ -30,22 +50,8 @@ public class TeleportControl {
 	}
 
 	/**
-	 * 添加传送请求到传送列表
-	 * 
-	 * @param player
-	 *            - 发出请求的玩家
-	 * @param target
-	 *            - 目标玩家
-	 * @param tptype
-	 *            - 传送类型
-	 */
-	public void addtp(Player player, Player target, TeleportType tptype) {
-		teleportList.put(target, new TeleportInfo(player, tptype));
-	}
-
-	/**
 	 * 玩家接受传送请求
-	 * 
+	 *
 	 * @param player
 	 *            - 执行的玩家
 	 */
@@ -73,8 +79,37 @@ public class TeleportControl {
 	}
 
 	/**
+	 * 添加传送请求到传送列表
+	 *
+	 * @param player
+	 *            - 发出请求的玩家
+	 * @param target
+	 *            - 目标玩家
+	 * @param tptype
+	 *            - 传送类型
+	 */
+	public void addtp(Player player, Player target, TeleportType tptype) {
+		teleportList.put(target, new TeleportInfo(player, tptype));
+	}
+
+	/**
+	 * 玩家返回上次传送的地点
+	 *
+	 * @param player
+	 *            - 被传送的玩家
+	 */
+	public void back(Player player) {
+		Location loc = lastlocList.get(player);
+		if (loc != null) {
+			magicTeleport(player, loc, 3);
+		} else {
+			player.sendMessage("§c未找到可以Back的地点!");
+		}
+	}
+
+	/**
 	 * 玩家拒绝传送请求
-	 * 
+	 *
 	 * @param player
 	 *            - 执行的玩家
 	 */
@@ -92,35 +127,8 @@ public class TeleportControl {
 	}
 
 	/**
-	 * 设置最后的地址数据
-	 * 
-	 * @param player
-	 *            - 玩家
-	 * @param loc
-	 *            - 地点
-	 */
-	public void setLastloc(Player player, Location loc) {
-		lastlocList.put(player, loc);
-	}
-
-	/**
-	 * 玩家返回上次传送的地点
-	 * 
-	 * @param player
-	 *            - 被传送的玩家
-	 */
-	public void back(Player player) {
-		Location loc = lastlocList.get(player);
-		if (loc != null) {
-			magicTeleport(player, loc, 3);
-		} else {
-			player.sendMessage("§c未找到可以Back的地点!");
-		}
-	}
-
-	/**
 	 * 魔法传送
-	 * 
+	 *
 	 * @param player
 	 *            - 被传送的玩家
 	 * @param loc
@@ -129,10 +137,13 @@ public class TeleportControl {
 	 *            - 传送延时
 	 */
 	public void magicTeleport(final Player player, final Location loc, final int delay) {
+		int petime = delay * 20 + 10;
 		setLastloc(player, player.getLocation());
-		player.sendMessage("§a传送开始 " + delay + "秒 后到达目的地 世界: " + loc.getWorld() + " X: "
-				+ loc.getX() + " Z: " + loc.getZ() + "!");
-		player.addPotionEffect(new PotionEffect(PotionEffectType.CONFUSION, delay, 255));
+		player.sendMessage("§a传送开始 " + delay + "秒 后到达目的地 §d世界: " + loc.getWorld().getName()
+				+ " §3X: " + loc.getBlockX() + " Z: " + loc.getBlockZ() + "!");
+		List<PotionEffect> pe = new ArrayList<PotionEffect>();
+		pe.add(new PotionEffect(PotionEffectType.SLOW, petime, 255));
+		player.addPotionEffects(pe);
 		plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
 			long timeoutmark = System.currentTimeMillis() + delay * 1000;
 			long lrng = 0;
@@ -140,11 +151,12 @@ public class TeleportControl {
 			@Override
 			public void run() {
 				while (System.currentTimeMillis() < timeoutmark) {
-					if (player.isOnline())
+					if (player.isOnline()) {
 						pEffect(player.getLocation(), lrng);
+					}
 					lrng++;
 					try {
-						Thread.sleep(50);
+						Thread.sleep(128);
 					} catch (Exception e) {
 					}
 				}
@@ -153,27 +165,22 @@ public class TeleportControl {
 		plugin.getServer().getScheduler().runTaskLater(plugin, new Runnable() {
 			@Override
 			public void run() {
-				if (player.isOnline())
+				if (player.isOnline()) {
 					player.teleport(loc);
+				}
 			}
 		}, delay * 20);
 	}
 
 	/**
-	 * 粒子发生器
-	 * 
+	 * 设置最后的地址数据
+	 *
+	 * @param player
+	 *            - 玩家
 	 * @param loc
-	 *            - 粒子产生的地点
-	 * @param range
-	 *            - 粒子的数量
+	 *            - 地点
 	 */
-	static void pEffect(Location loc, long range) {
-		int i;
-		if (range < 2)
-			range = 2;
-		for (i = 0; i < range; i++) {
-			loc.getWorld().playEffect(loc, Effect.LAVA_POP, 10, 100);
-			loc.getWorld().playEffect(loc, Effect.PORTAL, 10, 100);
-		}
+	public void setLastloc(Player player, Location loc) {
+		lastlocList.put(player, loc);
 	}
 }
