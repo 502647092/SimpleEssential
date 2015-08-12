@@ -23,7 +23,7 @@ public class TeleportControl {
 	protected HashMap<Player, TeleportInfo> teleportList = new HashMap<Player, TeleportInfo>();
 	protected HashMap<Player, Location> lastlocList = new HashMap<Player, Location>();
 	private SimpleEssential plugin;
-	private int TpDelay = Config.getInstance().getInt("tpdelay", 3);
+	private int TpDelay = Config.getInstance().getInt("Teleport.delay", 3);
 
 	public TeleportControl(SimpleEssential plugin) {
 		this.plugin = plugin;

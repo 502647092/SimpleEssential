@@ -4,6 +4,18 @@ version: 1.0
 servername: ''
 #插件名称
 pluginname: '&6[&b保护系统&6]&r'
+
+#基础传送系统
+Teleport:
+  #所有传送延时
+  delay: 3
+
+
+
+
+
+
+
 #登陆提示
 Tip: 
   #是否开启
