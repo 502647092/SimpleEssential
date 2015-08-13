@@ -12,15 +12,15 @@ import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import cn.citycraft.SimpleEssential.command.CommandBack;
+import cn.citycraft.SimpleEssential.command.CommandTpa;
+import cn.citycraft.SimpleEssential.command.CommandTpaccept;
+import cn.citycraft.SimpleEssential.command.CommandTpdeny;
+import cn.citycraft.SimpleEssential.command.CommandTphere;
+import cn.citycraft.SimpleEssential.command.SimpleEssentialCommand;
 import cn.citycraft.SimpleEssential.config.Config;
-import cn.citycraft.SimpleEssential.handler.SimpleEssentialCommand;
-import cn.citycraft.SimpleEssential.handler.command.CommandBack;
-import cn.citycraft.SimpleEssential.handler.command.CommandTpa;
-import cn.citycraft.SimpleEssential.handler.command.CommandTpaccept;
-import cn.citycraft.SimpleEssential.handler.command.CommandTpdeny;
-import cn.citycraft.SimpleEssential.handler.command.CommandTphere;
-import cn.citycraft.SimpleEssential.handler.teleport.TeleportControl;
 import cn.citycraft.SimpleEssential.listen.PlayerLocationListen;
+import cn.citycraft.SimpleEssential.teleport.TeleportControl;
 
 /**
  * @author 蒋天蓓 2015年8月11日下午3:29:32 TODO

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.citycraft.SimpleEssential.handler.teleport;
+package cn.citycraft.SimpleEssential.teleport;
 
 import org.bukkit.entity.Player;
 

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.citycraft.SimpleEssential.handler.teleport;
+package cn.citycraft.SimpleEssential.teleport;
 
 /**
  * @author 蒋天蓓

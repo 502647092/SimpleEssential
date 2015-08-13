@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.citycraft.SimpleEssential.handler.command;
+package cn.citycraft.SimpleEssential.command;
 
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandException;
@@ -9,8 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import cn.citycraft.SimpleEssential.SimpleEssential;
-import cn.citycraft.SimpleEssential.handler.SimpleEssentialCommand;
-import cn.citycraft.SimpleEssential.handler.teleport.TeleportType;
+import cn.citycraft.SimpleEssential.teleport.TeleportType;
 
 /**
  * @author 蒋天蓓

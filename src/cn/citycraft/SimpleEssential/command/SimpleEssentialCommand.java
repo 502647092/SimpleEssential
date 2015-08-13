@@ -1,7 +1,7 @@
 /**
  * 
  */
-package cn.citycraft.SimpleEssential.handler;
+package cn.citycraft.SimpleEssential.command;
 
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;

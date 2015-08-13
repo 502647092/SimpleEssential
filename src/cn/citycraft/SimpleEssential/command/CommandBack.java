@@ -1,14 +1,13 @@
 /**
  *
  */
-package cn.citycraft.SimpleEssential.handler.command;
+package cn.citycraft.SimpleEssential.command;
 
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import cn.citycraft.SimpleEssential.SimpleEssential;
-import cn.citycraft.SimpleEssential.handler.SimpleEssentialCommand;
 
 /**
  * @author 蒋天蓓 2015年8月12日下午2:04:05 TODO

@@ -1,7 +1,7 @@
 /**
  *
  */
-package cn.citycraft.SimpleEssential.handler.teleport;
+package cn.citycraft.SimpleEssential.teleport;
 
 import java.util.ArrayList;
 import java.util.HashMap;
