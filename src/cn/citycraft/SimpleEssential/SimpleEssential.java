@@ -14,6 +14,8 @@ import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import cn.citycraft.SimpleEssential.command.CommandBack;
+import cn.citycraft.SimpleEssential.command.CommandHome;
+import cn.citycraft.SimpleEssential.command.CommandSetHome;
 import cn.citycraft.SimpleEssential.command.CommandTop;
 import cn.citycraft.SimpleEssential.command.CommandTpa;
 import cn.citycraft.SimpleEssential.command.CommandTpaccept;
@@ -89,6 +91,9 @@ public class SimpleEssential extends JavaPlugin {
 		registerCommand(new CommandTpdeny(this));
 		registerCommand(new CommandTphere(this));
 		registerCommand(new CommandBack(this));
+		registerCommand(new CommandSetHome(this));
+		registerCommand(new CommandHome(this));
+
 	}
 
 	/**
