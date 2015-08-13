@@ -10,9 +10,11 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import cn.citycraft.SimpleEssential.command.CommandBack;
+import cn.citycraft.SimpleEssential.command.CommandTop;
 import cn.citycraft.SimpleEssential.command.CommandTpa;
 import cn.citycraft.SimpleEssential.command.CommandTpaccept;
 import cn.citycraft.SimpleEssential.command.CommandTpdeny;
@@ -45,10 +47,9 @@ public class SimpleEssential extends JavaPlugin {
 						sender.sendMessage(e.getMessage());
 					}
 				}
-				sender.sendMessage("命令参数错误!");
+				return false;
 			}
 		}
-		sender.sendMessage("循环结束!");
 		return true;
 	}
 
@@ -59,16 +60,17 @@ public class SimpleEssential extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		commandlist = new ArrayList<SimpleEssentialCommand>();
-		// registerSubCommand(new AddlineCommand());
-		registerSubCommand(new CommandTpa(this));
-		registerSubCommand(new CommandTpaccept(this));
-		registerSubCommand(new CommandTpdeny(this));
-		registerSubCommand(new CommandTphere(this));
-		registerSubCommand(new CommandBack(this));
-
+		this.registerCommands();
+		this.registerEvents();
 		tpcontrol = new TeleportControl(this);
-		getServer().getPluginManager().registerEvents(new PlayerLocationListen(this), this);
+
+	}
+
+	/**
+	 * 注册监听
+	 */
+	private void registerEvents() {
+		registerEvent(new PlayerLocationListen(this));
 	}
 
 	@Override
@@ -78,11 +80,34 @@ public class SimpleEssential extends JavaPlugin {
 
 	/**
 	 * 注册命令
+	 */
+	public void registerCommands() {
+		commandlist = new ArrayList<SimpleEssentialCommand>();
+		registerCommand(new CommandTpa(this));
+		registerCommand(new CommandTop(this));
+		registerCommand(new CommandTpaccept(this));
+		registerCommand(new CommandTpdeny(this));
+		registerCommand(new CommandTphere(this));
+		registerCommand(new CommandBack(this));
+	}
+
+	/**
+	 * 注册命令
 	 *
-	 * @param subCommand
+	 * @param command
 	 *            - 被注册的命令类
 	 */
-	public void registerSubCommand(SimpleEssentialCommand subCommand) {
-		commandlist.add(subCommand);
+	public void registerCommand(SimpleEssentialCommand command) {
+		commandlist.add(command);
+	}
+
+	/**
+	 * 注册事件
+	 * 
+	 * @param listener
+	 *            - 被注册的事件类
+	 */
+	public void registerEvent(Listener listener) {
+		getServer().getPluginManager().registerEvents(listener, this);
 	}
 }

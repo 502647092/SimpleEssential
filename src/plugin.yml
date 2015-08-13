@@ -39,7 +39,18 @@ commands:
     usage: §b使用/back 回到上一个TP地点!
     permission: se.back
     permission-message: §c你没有 <permission> 的权限来执行此命令!
+  top: 
+    description: 回到上一个TP地点
+    aliases: [setop]
+    usage: §b使用/top 传送到当前位置最高方块!
+    permission: se.top
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
 permissions: 
+  se.*:
+    description: 简单基础插件所有权限!
+    default: op
+    children:
+      se.user: true
   se.user: 
     description: 简单基础插件玩家权限!
     default: true

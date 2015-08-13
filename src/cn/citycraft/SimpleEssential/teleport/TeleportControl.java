@@ -133,6 +133,18 @@ public class TeleportControl {
 	 *            - 被传送的玩家
 	 * @param loc
 	 *            - 传送的地点
+	 */
+	public void magicTeleport(final Player player, final Location loc) {
+		magicTeleport(player, loc, TpDelay);
+	}
+
+	/**
+	 * 魔法传送
+	 *
+	 * @param player
+	 *            - 被传送的玩家
+	 * @param loc
+	 *            - 传送的地点
 	 * @param delay
 	 *            - 传送延时
 	 */
@@ -143,6 +155,7 @@ public class TeleportControl {
 				+ " §3X: " + loc.getBlockX() + " Z: " + loc.getBlockZ() + "!");
 		List<PotionEffect> pe = new ArrayList<PotionEffect>();
 		pe.add(new PotionEffect(PotionEffectType.SLOW, petime, 255));
+		pe.add(new PotionEffect(PotionEffectType.CONFUSION, petime, 255));
 		player.addPotionEffects(pe);
 		plugin.getServer().getScheduler().runTaskAsynchronously(plugin, new Runnable() {
 			long timeoutmark = System.currentTimeMillis() + delay * 1000;
