@@ -40,10 +40,22 @@ commands:
     permission: se.back
     permission-message: §c你没有 <permission> 的权限来执行此命令!
   top: 
-    description: 回到上一个TP地点
+    description: 传送到最高方块
     aliases: [setop]
     usage: §b使用/top 传送到当前位置最高方块!
     permission: se.top
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
+  home: 
+    description: 传送到家里
+    aliases: [sehome]
+    usage: §b使用/home 传送到家里!
+    permission: se.home
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
+  sethome: 
+    description: 设置当前位置为家
+    aliases: [sesethome]
+    usage: §b使用/sethome 设置当前位置为家!
+    permission: se.sethome
     permission-message: §c你没有 <permission> 的权限来执行此命令!
 permissions: 
   se.*:

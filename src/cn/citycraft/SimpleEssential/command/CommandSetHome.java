@@ -1,5 +1,5 @@
 /**
- * 
+ *
  */
 package cn.citycraft.SimpleEssential.command;
 
@@ -12,9 +12,7 @@ import org.bukkit.entity.Player;
 import cn.citycraft.SimpleEssential.SimpleEssential;
 
 /**
- * @author 蒋天蓓
- *         2015年8月12日下午2:04:05
- *         TODO
+ * @author 蒋天蓓 2015年8月12日下午2:04:05 TODO
  */
 public class CommandSetHome extends SimpleEssentialCommand {
 	SimpleEssential plugin;
@@ -28,8 +26,15 @@ public class CommandSetHome extends SimpleEssentialCommand {
 	}
 
 	@Override
-	public String getPossibleArguments() {
-		return "";
+	public void execute(CommandSender sender, String label, String[] args) throws CommandException {
+		Player p = (Player) sender;
+		Block b = p.getLocation().getBlock();
+		if (b.getType() == Material.BED_BLOCK) {
+			p.setBedSpawnLocation(b.getLocation(), true);
+			p.sendMessage("§a家设置成功!");
+		} else {
+			p.sendMessage("§c请站在床上设置家!");
+		}
 	}
 
 	@Override
@@ -38,13 +43,7 @@ public class CommandSetHome extends SimpleEssentialCommand {
 	}
 
 	@Override
-	public void execute(CommandSender sender, String label, String[] args) throws CommandException {
-		Player p = (Player) sender;
-		Block b = p.getLocation().add(0, -1, 0).getBlock();
-		if (b.getType() == Material.BED_BLOCK) {
-
-		} else {
-
-		}
+	public String getPossibleArguments() {
+		return "";
 	}
 }
