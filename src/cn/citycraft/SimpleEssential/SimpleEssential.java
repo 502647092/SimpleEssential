@@ -6,7 +6,6 @@ package cn.citycraft.SimpleEssential;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
@@ -48,11 +47,11 @@ public class SimpleEssential extends JavaPlugin {
 		for (SimpleEssentialCommand command : commandlist) {
 			if (command.isValidTrigger(label)) {
 				if (!command.hasPermission(sender)) {
-					sender.sendMessage(ChatColor.RED + "你没有此命令的权限.");
+					sender.sendMessage(Language.getMessage("Base.no-permission"));
 					return true;
 				}
 				if (command.isOnlyPlayerExecutable() && !(sender instanceof Player)) {
-					sender.sendMessage(ChatColor.RED + "此命令只能由玩家执行.");
+					sender.sendMessage(Language.getMessage("Base.playercommand"));
 					return true;
 				}
 				if (args.length >= command.getMinimumArguments()) {

@@ -3,6 +3,8 @@ version: 1.0
 #基础语言配置
 Base: 
   offline: "§c玩家 {0} 不存在或不在线!"
+  no-permission: '§c你没有此命令的权限.'
+  playercommand: '§c此命令只能由玩家执行.'
 #基础传送系统
 Teleport:
   tp: '§a传送开始 {0}秒 后到达 目的地 §d世界: {1} §3X: {2} Z: {3}!'

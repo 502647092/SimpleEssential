@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
-import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -16,33 +15,12 @@ import org.bukkit.potion.PotionEffectType;
 import cn.citycraft.SimpleEssential.SimpleEssential;
 import cn.citycraft.SimpleEssential.config.Config;
 import cn.citycraft.SimpleEssential.config.Language;
+import cn.citycraft.SimpleEssential.utils.EffectUtil;
 
 /**
  * @author 蒋天蓓 2015年8月12日下午2:26:10 传送控制类
  */
 public class TeleportControl {
-	/**
-	 * 粒子发生器
-	 *
-	 * @param loc
-	 *            - 粒子产生的地点
-	 * @param range
-	 *            - 粒子的数量
-	 */
-	static void pEffect(Location loc, long range) {
-		try {
-			int i;
-			if (range < 2) {
-				range = 2;
-			}
-			for (i = 0; i < range; i++) {
-				loc.getWorld().playEffect(loc, Effect.LAVA_POP, 10, 100);
-				loc.getWorld().playEffect(loc, Effect.PORTAL, 10, 100);
-			}
-		} catch (Exception e) {
-		}
-	}
-
 	protected HashMap<Player, TeleportInfo> teleportList = new HashMap<Player, TeleportInfo>();
 	protected HashMap<Player, Location> lastlocList = new HashMap<Player, Location>();
 	private SimpleEssential plugin;
@@ -170,7 +148,7 @@ public class TeleportControl {
 			public void run() {
 				while (System.currentTimeMillis() < timeoutmark) {
 					if (player.isOnline()) {
-						pEffect(player.getLocation(), lrng);
+						EffectUtil.run(player.getLocation(), lrng);
 					}
 					lrng++;
 					try {
