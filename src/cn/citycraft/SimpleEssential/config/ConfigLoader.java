@@ -32,8 +32,7 @@ public class ConfigLoader extends FileConfig {
 
 	public ConfigLoader(Plugin p, String filename) {
 		ConfigLoader.plugin = p;
-		config = loadConfig(p, new File(p.getDataFolder(), filename), null,
-				true);
+		config = loadConfig(p, new File(p.getDataFolder(), filename), null, true);
 	}
 
 	public ConfigLoader(Plugin p, String filename, boolean res) {
@@ -56,7 +55,7 @@ public class ConfigLoader extends FileConfig {
 	}
 
 	public FileConfig loadConfig(Plugin p, File file, String ver, boolean res) {
-		tip = res ;
+		tip = res;
 		if (!file.getParentFile().exists()) {
 			file.getParentFile().mkdirs();
 			p.getLogger().info("创建新的文件夹" + file.getParentFile().getAbsolutePath() + "...");
@@ -68,16 +67,23 @@ public class ConfigLoader extends FileConfig {
 				FileConfig configcheck = init(file);
 				String version = configcheck.getString("version");
 				if (version == null || !version.equals(ver)) {
+					p.getLogger().warning("配置文件: " + file.getName() + " 版本过低 正在升级...");
+					try {
+						configcheck.save(new File(file.getParent(), file.getName() + ".backup"));
+						p.getLogger()
+								.warning(
+										"配置文件: " + file.getName() + " 已备份为 " + file.getName()
+												+ ".backup !");
+					} catch (IOException e) {
+						p.getLogger().warning("配置文件: " + file.getName() + "备份失败!");
+					}
 					p.saveResource(file.getName(), true);
-					p.getLogger().warning(
-								"配置文件: " + file.getName() + " 版本过低 正在升级...");
+					p.getLogger().info("配置文件: " + file.getName() + "升级成功!");
 				}
 			}
 		}
 		if (tip)
-			p.getLogger().info(
-					"载入配置文件: " + file.getName()
-							+ (ver != null ? " 版本: " + ver : ""));
+			p.getLogger().info("载入配置文件: " + file.getName() + (ver != null ? " 版本: " + ver : ""));
 		return init(file);
 	}
 

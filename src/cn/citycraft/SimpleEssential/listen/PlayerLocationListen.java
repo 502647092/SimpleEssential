@@ -6,6 +6,7 @@ package cn.citycraft.SimpleEssential.listen;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.entity.PlayerDeathEvent;
 
@@ -23,7 +24,7 @@ public class PlayerLocationListen implements Listener {
 		this.plugin = main;
 	}
 
-	@EventHandler
+	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerDeath(PlayerDeathEvent e) {
 		Player player = e.getEntity();
 		Location loc = player.getLocation();

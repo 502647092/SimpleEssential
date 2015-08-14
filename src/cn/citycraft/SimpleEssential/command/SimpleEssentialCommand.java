@@ -74,9 +74,9 @@ public abstract class SimpleEssentialCommand {
 	public abstract String getPossibleArguments();
 
 	/**
-	 * 获得最小参数组
+	 * 获得最小参数个数
 	 * 
-	 * @return 最小参数组
+	 * @return 最小参数个数
 	 */
 	public abstract int getMinimumArguments();
 
@@ -92,8 +92,7 @@ public abstract class SimpleEssentialCommand {
 	 * @throws CommandException
 	 *             - 命令异常
 	 */
-	public abstract void execute(CommandSender sender, String label, String[] args)
-			throws CommandException;
+	public abstract void execute(CommandSender sender, String label, String[] args) throws CommandException;
 
 	/**
 	 * 命令匹配检测

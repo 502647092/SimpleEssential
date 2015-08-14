@@ -25,12 +25,20 @@ import cn.citycraft.SimpleEssential.command.SimpleEssentialCommand;
 import cn.citycraft.SimpleEssential.config.Config;
 import cn.citycraft.SimpleEssential.listen.PlayerLocationListen;
 import cn.citycraft.SimpleEssential.teleport.TeleportControl;
+import cn.citycraft.SimpleEssential.utils.VersionChecker;
 
 /**
  * @author 蒋天蓓 2015年8月11日下午3:29:32 TODO
  */
 public class SimpleEssential extends JavaPlugin {
+
+	/**
+	 * 传送控制
+	 */
 	public TeleportControl tpcontrol;
+	/**
+	 * 命令监听列表
+	 */
 	private List<SimpleEssentialCommand> commandlist;
 
 	@Override
@@ -49,27 +57,25 @@ public class SimpleEssential extends JavaPlugin {
 						sender.sendMessage(e.getMessage());
 					}
 				}
-				return false;
 			}
 		}
-		return true;
+		return false;
 	}
 
 	@Override
 	public void onDisable() {
-		this.getLogger().info("");
 	}
 
 	@Override
 	public void onEnable() {
+		tpcontrol = new TeleportControl(this);
 		this.registerCommands();
 		this.registerEvents();
-		tpcontrol = new TeleportControl(this);
-
+		new VersionChecker(this);
 	}
 
 	/**
-	 * 注册监听
+	 * 注册事件
 	 */
 	private void registerEvents() {
 		registerEvent(new PlayerLocationListen(this));
