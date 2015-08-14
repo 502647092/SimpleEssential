@@ -50,8 +50,10 @@ public class SimpleEssential extends JavaPlugin {
 				if (!command.hasPermission(sender)) {
 					sender.sendMessage(ChatColor.RED + "你没有此命令的权限.");
 					return true;
-				}else if(command.isOnlyPlayerExecutable() && !(sender instanceof Player)){
+				}
+				if (command.isOnlyPlayerExecutable() && !(sender instanceof Player)) {
 					sender.sendMessage(ChatColor.RED + "此命令只能由玩家执行.");
+					return true;
 				}
 				if (args.length >= command.getMinimumArguments()) {
 					try {
