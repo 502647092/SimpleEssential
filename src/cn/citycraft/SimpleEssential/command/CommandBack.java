@@ -22,6 +22,9 @@ public class CommandBack extends SimpleEssentialCommand {
 		super("back", "seback");
 		this.plugin = main;
 	}
+	
+	@Override
+	public boolean isOnlyPlayerExecutable() {return true;};
 
 	@Override
 	public void execute(CommandSender sender, String label, String[] args) throws CommandException {

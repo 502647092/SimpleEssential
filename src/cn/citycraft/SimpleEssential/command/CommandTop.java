@@ -26,6 +26,9 @@ public class CommandTop extends SimpleEssentialCommand {
 		super("top", "estop");
 		this.plugin = main;
 	}
+	
+	@Override
+	public boolean isOnlyPlayerExecutable() {return true;};
 
 	@Override
 	public String getPossibleArguments() {

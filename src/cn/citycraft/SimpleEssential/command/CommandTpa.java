@@ -27,6 +27,9 @@ public class CommandTpa extends SimpleEssentialCommand {
 		super("tpa");
 		this.plugin = main;
 	}
+	
+	@Override
+	public boolean isOnlyPlayerExecutable() {return true;};
 
 	@Override
 	public String getPossibleArguments() {

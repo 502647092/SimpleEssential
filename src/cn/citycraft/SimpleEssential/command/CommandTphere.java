@@ -38,6 +38,9 @@ public class CommandTphere extends SimpleEssentialCommand {
 				Language.getMessage("Teleport.tpdeny")
 		});
 	}
+	
+	@Override
+	public boolean isOnlyPlayerExecutable() {return true;};
 
 	@Override
 	public int getMinimumArguments() {

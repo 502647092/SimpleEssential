@@ -24,6 +24,9 @@ public class CommandTpdeny extends SimpleEssentialCommand {
 		super("tpdeny", "tpno");
 		this.plugin = main;
 	}
+	
+	@Override
+	public boolean isOnlyPlayerExecutable() {return true;};
 
 	@Override
 	public String getPossibleArguments() {
