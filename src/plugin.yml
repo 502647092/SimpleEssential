@@ -78,5 +78,7 @@ permissions:
       se.tpaccept: true
       se.tpdeny: true
       se.back: true
+      se.sethome: true
+      se.home: true
       se.suicide: true
 

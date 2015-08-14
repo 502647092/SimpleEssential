@@ -73,7 +73,6 @@ public class VersionChecker implements Listener {
 						}
 					}
 				} catch (IOException e) {
-					e.printStackTrace();
 					plugin.getLogger().warning("版本更新检查失败!");
 				}
 			}

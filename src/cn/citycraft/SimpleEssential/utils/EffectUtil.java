@@ -20,15 +20,16 @@ public class EffectUtil {
 	 * @param range
 	 *            - 粒子的数量
 	 */
-	public static void run(Location loc, long range) {
+	public static void run(Location loc, long range, Effect... effects) {
 		try {
 			int i;
 			if (range < 2) {
 				range = 2;
 			}
 			for (i = 0; i < range; i++) {
-				loc.getWorld().playEffect(loc, Effect.LAVA_POP, 10, 100);
-				loc.getWorld().playEffect(loc, Effect.PORTAL, 10, 100);
+				for (Effect effect : effects) {
+					loc.getWorld().playEffect(loc, effect, 10, 100);
+				}
 			}
 		} catch (Exception e) {
 		}

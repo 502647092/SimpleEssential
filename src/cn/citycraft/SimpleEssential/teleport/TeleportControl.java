@@ -7,6 +7,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 
+import org.bukkit.Effect;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
 import org.bukkit.potion.PotionEffect;
@@ -148,7 +149,7 @@ public class TeleportControl {
 			public void run() {
 				while (System.currentTimeMillis() < timeoutmark) {
 					if (player.isOnline()) {
-						EffectUtil.run(player.getLocation(), lrng);
+						EffectUtil.run(player.getLocation(), lrng, Effect.MOBSPAWNER_FLAMES, Effect.PORTAL);
 					}
 					lrng++;
 					try {
