@@ -57,6 +57,12 @@ commands:
     usage: §b使用/sethome 设置当前位置为家!
     permission: se.sethome
     permission-message: §c你没有 <permission> 的权限来执行此命令!
+  suicide: 
+    description: 自杀
+    aliases: [sesuicide,sd]
+    usage: §b使用/suicide结束自己的生命!
+    permission: se.suicide
+    permission-message: §c你没有 <permission> 的权限来执行此命令!
 permissions: 
   se.*:
     description: 简单基础插件所有权限!
@@ -72,4 +78,5 @@ permissions:
       se.tpaccept: true
       se.tpdeny: true
       se.back: true
+      se.suicide: true
 

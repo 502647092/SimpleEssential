@@ -37,6 +37,9 @@ public class CommandTphere extends SimpleEssentialCommand {
 				"§c输入命令/tpdeny 或 /tpno 拒绝传送"
 		});
 	}
+	
+	@Override
+	public boolean isOnlyPlayerExecutable() {return true;};
 
 	@Override
 	public int getMinimumArguments() {

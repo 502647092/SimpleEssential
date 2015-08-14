@@ -24,6 +24,9 @@ public class CommandTpaccept extends SimpleEssentialCommand {
 		super("tpaccept", "tpok");
 		this.plugin = main;
 	}
+	
+	@Override
+	public boolean isOnlyPlayerExecutable() {return true;};
 
 	@Override
 	public String getPossibleArguments() {

@@ -10,6 +10,7 @@ import org.bukkit.ChatColor;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -48,6 +49,8 @@ public class SimpleEssential extends JavaPlugin {
 				if (!command.hasPermission(sender)) {
 					sender.sendMessage(ChatColor.RED + "你没有此命令的权限.");
 					return true;
+				}else if(command.isOnlyPlayerExecutable() && !(sender instanceof Player)){
+					sender.sendMessage(ChatColor.RED + "此命令只能由玩家执行.");
 				}
 				if (args.length >= command.getMinimumArguments()) {
 					try {

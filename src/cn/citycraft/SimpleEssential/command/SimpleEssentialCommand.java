@@ -93,6 +93,11 @@ public abstract class SimpleEssentialCommand {
 	 *             - 命令异常
 	 */
 	public abstract void execute(CommandSender sender, String label, String[] args) throws CommandException;
+	
+	/**
+	 * 是否只有玩家才能执行此命令
+	 */
+	public abstract boolean isOnlyPlayerExecutable();
 
 	/**
 	 * 命令匹配检测
