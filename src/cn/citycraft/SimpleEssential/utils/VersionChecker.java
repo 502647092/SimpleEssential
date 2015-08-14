@@ -19,8 +19,8 @@ import com.google.common.base.Charsets;
 
 public class VersionChecker implements Listener {
 	Plugin plugin;
-	String checkurl = "https://coding.net/u/502647092/p/{0}/git/raw/{1}/src/plugin.yml";
-	String branch = "master";
+	public String checkurl = "https://coding.net/u/502647092/p/%s/git/raw/%s/src/plugin.yml";
+	public String branch = "master";
 
 	public VersionChecker(Plugin plugin) {
 		this.plugin = plugin;
@@ -37,6 +37,10 @@ public class VersionChecker implements Listener {
 	}
 
 	public String getCheckUrl(String pluginName, String branch) {
+		System.out.println(checkurl);
+		System.out.println(pluginName);
+		System.out.println(branch);
+		System.out.println(String.format(checkurl, pluginName, branch));
 		return String.format(checkurl, pluginName, branch);
 	}
 
@@ -73,6 +77,7 @@ public class VersionChecker implements Listener {
 						}
 					}
 				} catch (IOException e) {
+					e.printStackTrace();
 					plugin.getLogger().warning("版本更新检查失败!");
 				}
 			}
