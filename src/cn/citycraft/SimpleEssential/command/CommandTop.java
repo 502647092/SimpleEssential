@@ -12,9 +12,11 @@ import cn.citycraft.SimpleEssential.SimpleEssential;
 import cn.citycraft.SimpleEssential.config.Language;
 
 /**
+ * 传送到顶部命令
+ * 
  * @author 蒋天蓓
  *         2015年8月12日下午2:04:05
- *         TODO
+ * 
  */
 public class CommandTop extends SimpleEssentialCommand {
 	SimpleEssential plugin;
@@ -26,9 +28,11 @@ public class CommandTop extends SimpleEssentialCommand {
 		super("top", "estop");
 		this.plugin = main;
 	}
-	
+
 	@Override
-	public boolean isOnlyPlayerExecutable() {return true;};
+	public boolean isOnlyPlayerExecutable() {
+		return true;
+	};
 
 	@Override
 	public String getPossibleArguments() {

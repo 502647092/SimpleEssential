@@ -13,9 +13,11 @@ import org.bukkit.event.entity.PlayerDeathEvent;
 import cn.citycraft.SimpleEssential.SimpleEssential;
 
 /**
+ * 玩家传送点记录监听
+ * 
  * @author 蒋天蓓
  *         2015年8月12日下午8:19:33
- *         TODO
+ * 
  */
 public class PlayerLocationListen implements Listener {
 	SimpleEssential plugin;

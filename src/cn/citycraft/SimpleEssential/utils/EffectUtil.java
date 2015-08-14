@@ -7,9 +7,11 @@ import org.bukkit.Effect;
 import org.bukkit.Location;
 
 /**
+ * 粒子发生器
+ * 
  * @author 蒋天蓓
  *         2015年8月14日下午2:07:02
- *         TODO
+ * 
  */
 public class EffectUtil {
 	/**

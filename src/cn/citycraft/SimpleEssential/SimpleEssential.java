@@ -29,7 +29,9 @@ import cn.citycraft.SimpleEssential.teleport.TeleportControl;
 import cn.citycraft.SimpleEssential.utils.VersionChecker;
 
 /**
- * @author 蒋天蓓 2015年8月11日下午3:29:32 TODO
+ * 简单基础插件
+ * 
+ * @author 蒋天蓓 2015年8月11日下午3:29:32
  */
 public class SimpleEssential extends JavaPlugin {
 

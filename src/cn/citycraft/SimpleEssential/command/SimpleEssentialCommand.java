@@ -7,9 +7,10 @@ import org.bukkit.command.CommandException;
 import org.bukkit.command.CommandSender;
 
 /**
+ * 基础命令类
+ * 
  * @author 蒋天蓓
  *         2015年8月12日下午12:49:34
- *         TODO
  */
 public abstract class SimpleEssentialCommand {
 	private String name;
@@ -93,7 +94,7 @@ public abstract class SimpleEssentialCommand {
 	 *             - 命令异常
 	 */
 	public abstract void execute(CommandSender sender, String label, String[] args) throws CommandException;
-	
+
 	/**
 	 * 是否只有玩家才能执行此命令
 	 */

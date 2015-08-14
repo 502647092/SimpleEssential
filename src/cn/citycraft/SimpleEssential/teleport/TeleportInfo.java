@@ -6,9 +6,11 @@ package cn.citycraft.SimpleEssential.teleport;
 import org.bukkit.entity.Player;
 
 /**
+ * 玩家传送记录
+ * 
  * @author 蒋天蓓
  *         2015年8月12日下午2:56:25
- *         TODO
+ * 
  */
 public class TeleportInfo {
 	protected TeleportType tptype;

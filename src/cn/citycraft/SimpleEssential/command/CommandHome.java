@@ -12,7 +12,9 @@ import cn.citycraft.SimpleEssential.SimpleEssential;
 import cn.citycraft.SimpleEssential.config.Language;
 
 /**
- * @author 蒋天蓓 2015年8月12日下午2:04:05 TODO
+ * 传送回家的命令
+ * 
+ * @author 蒋天蓓 2015年8月12日下午2:04:05
  */
 public class CommandHome extends SimpleEssentialCommand {
 	SimpleEssential plugin;
@@ -24,9 +26,11 @@ public class CommandHome extends SimpleEssentialCommand {
 		super("home", "eshome");
 		this.plugin = main;
 	}
-	
+
 	@Override
-	public boolean isOnlyPlayerExecutable() {return true;};
+	public boolean isOnlyPlayerExecutable() {
+		return true;
+	};
 
 	@Override
 	public void execute(CommandSender sender, String label, String[] args) throws CommandException {

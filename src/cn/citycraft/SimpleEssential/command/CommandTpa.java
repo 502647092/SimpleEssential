@@ -13,9 +13,11 @@ import cn.citycraft.SimpleEssential.config.Language;
 import cn.citycraft.SimpleEssential.teleport.TeleportType;
 
 /**
+ * 玩家传送命令
+ * 
  * @author 蒋天蓓
  *         2015年8月12日下午2:04:05
- *         TODO
+ *
  */
 public class CommandTpa extends SimpleEssentialCommand {
 	SimpleEssential plugin;
@@ -27,9 +29,11 @@ public class CommandTpa extends SimpleEssentialCommand {
 		super("tpa");
 		this.plugin = main;
 	}
-	
+
 	@Override
-	public boolean isOnlyPlayerExecutable() {return true;};
+	public boolean isOnlyPlayerExecutable() {
+		return true;
+	};
 
 	@Override
 	public String getPossibleArguments() {

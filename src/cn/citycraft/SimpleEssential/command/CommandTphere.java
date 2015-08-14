@@ -13,7 +13,9 @@ import cn.citycraft.SimpleEssential.config.Language;
 import cn.citycraft.SimpleEssential.teleport.TeleportType;
 
 /**
- * @author 蒋天蓓 2015年8月12日下午2:04:05 TODO
+ * 传送到玩家命令
+ * 
+ * @author 蒋天蓓 2015年8月12日下午2:04:05
  */
 public class CommandTphere extends SimpleEssentialCommand {
 	SimpleEssential plugin;
@@ -38,9 +40,11 @@ public class CommandTphere extends SimpleEssentialCommand {
 				Language.getMessage("Teleport.tpdeny")
 		});
 	}
-	
+
 	@Override
-	public boolean isOnlyPlayerExecutable() {return true;};
+	public boolean isOnlyPlayerExecutable() {
+		return true;
+	};
 
 	@Override
 	public int getMinimumArguments() {

@@ -10,7 +10,7 @@ import org.bukkit.entity.Player;
 import cn.citycraft.SimpleEssential.SimpleEssential;
 
 /**
- * @author 蒋天蓓 2015年8月12日下午2:04:05 TODO
+ * @author 蒋天蓓 2015年8月12日下午2:04:05
  */
 public class CommandBack extends SimpleEssentialCommand {
 	SimpleEssential plugin;
@@ -22,9 +22,11 @@ public class CommandBack extends SimpleEssentialCommand {
 		super("back", "seback");
 		this.plugin = main;
 	}
-	
+
 	@Override
-	public boolean isOnlyPlayerExecutable() {return true;};
+	public boolean isOnlyPlayerExecutable() {
+		return true;
+	};
 
 	@Override
 	public void execute(CommandSender sender, String label, String[] args) throws CommandException {
