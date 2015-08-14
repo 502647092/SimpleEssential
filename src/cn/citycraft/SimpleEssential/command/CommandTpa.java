@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import cn.citycraft.SimpleEssential.SimpleEssential;
+import cn.citycraft.SimpleEssential.config.Language;
 import cn.citycraft.SimpleEssential.teleport.TeleportType;
 
 /**
@@ -41,15 +42,15 @@ public class CommandTpa extends SimpleEssentialCommand {
 	public void execute(CommandSender sender, String label, String[] args) throws CommandException {
 		Player target = Bukkit.getPlayer(args[0]);
 		if (target == null) {
-			sender.sendMessage("§c玩家 " + args[0] + " 不存在或不在线!");
+			sender.sendMessage(Language.getMessage("Base.offline", args[0]));
 			return;
 		}
 		plugin.tpcontrol.addtp((Player) sender, Bukkit.getPlayer(args[0]), TeleportType.TPA);
-		sender.sendMessage("§a已经向玩家 " + target.getDisplayName() + " §a发送传送请求!");
+		sender.sendMessage(Language.getMessage("Teleport.tpsend"));
 		target.sendMessage(new String[] {
-				"§a玩家: " + sender.getName() + "§a请求传送到你这里!",
-				"§a输入命令/tpaccept 或 /tpok 接受传送",
-				"§c输入命令/tpdeny 或 /tpno 拒绝传送"
+				Language.getMessage("Teleport.tpa", sender.getName()),
+				Language.getMessage("Teleport.tpaccept"),
+				Language.getMessage("Teleport.tpdeny")
 		});
 	}
 }

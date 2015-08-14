@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import cn.citycraft.SimpleEssential.SimpleEssential;
+import cn.citycraft.SimpleEssential.config.Language;
 
 /**
  * @author 蒋天蓓 2015年8月12日下午2:04:05 TODO
@@ -29,7 +30,7 @@ public class CommandHome extends SimpleEssentialCommand {
 		Player p = (Player) sender;
 		Location loc = p.getBedSpawnLocation();
 		if (loc == null) {
-			p.sendMessage("§c你的床丢失了或者被方块阻挡了!");
+			p.sendMessage(Language.getMessage("Teleport.homelose"));
 			return;
 		}
 		plugin.tpcontrol.magicTeleport(p, loc);

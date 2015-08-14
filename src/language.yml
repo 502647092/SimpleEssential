@@ -1,0 +1,27 @@
+#本文件为基础插件的语言配置文件
+version: 1.0
+#基础语言配置
+Base: 
+  offline: "§c玩家 {0} 不存在或不在线!"
+#基础传送系统
+Teleport:
+  tp: '§a传送开始 {0}秒 后到达 目的地 §d世界: {1} §3X: {2} Z: {3}!'
+  accept: '§a已接受玩家: {0} §a的传送请求!'
+  acceptfrom: '§a玩家: {0}§a接受了您的请求!'
+  deny: '§c已拒绝玩家: {0} §c的传送请求!'
+  denyfrom: '§c玩家: {0}§c拒绝了您的请求!'
+  offline: '§c目标玩家已离线 本次传送取消!'
+  none: '§c没有找到需要传送的队列!'
+  sethomesuccess: '§a家设置成功!'
+  sethomeerror: '§c请站在床上设置家!'
+  homelose: '§c你的床丢失了或者被方块阻挡了!'
+  top: '&a已传送至当前位置最高方块!'
+  tpsend: '§a已经向玩家 {0} §a发送传送请求!'
+  tpa: '§a玩家: {0}§a请求传送到你这里!'
+  tphere: '§b玩家: {0}§b请求你传送到他那里!'
+  tpaccept: '§a输入命令/tpaccept 或 /tpok 接受传送'
+  tpdeny: '§c输入命令/tpdeny 或 /tpno 拒绝传送'
+  nobackloc: '§c未找到可以Back的地点!'
+  
+  
+  Language.getMessage("Teleport.none")

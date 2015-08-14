@@ -3,9 +3,10 @@ version: 1.0
 #服务器名称
 servername: ''
 #插件名称
-pluginname: '&6[&b保护系统&6]&r'
+pluginname: '&6[&b基础系统&6]&r'
 
 #基础传送系统
 Teleport:
+  name: '&6[&b传送系统&6]&r'
   #所有传送延时
   delay: 3

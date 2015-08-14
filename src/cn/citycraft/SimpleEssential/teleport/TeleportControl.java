@@ -15,6 +15,7 @@ import org.bukkit.potion.PotionEffectType;
 
 import cn.citycraft.SimpleEssential.SimpleEssential;
 import cn.citycraft.SimpleEssential.config.Config;
+import cn.citycraft.SimpleEssential.config.Language;
 
 /**
  * @author 蒋天蓓 2015年8月12日下午2:26:10 传送控制类
@@ -29,13 +30,16 @@ public class TeleportControl {
 	 *            - 粒子的数量
 	 */
 	static void pEffect(Location loc, long range) {
-		int i;
-		if (range < 2) {
-			range = 2;
-		}
-		for (i = 0; i < range; i++) {
-			loc.getWorld().playEffect(loc, Effect.LAVA_POP, 10, 100);
-			loc.getWorld().playEffect(loc, Effect.PORTAL, 10, 100);
+		try {
+			int i;
+			if (range < 2) {
+				range = 2;
+			}
+			for (i = 0; i < range; i++) {
+				loc.getWorld().playEffect(loc, Effect.LAVA_POP, 10, 100);
+				loc.getWorld().playEffect(loc, Effect.PORTAL, 10, 100);
+			}
+		} catch (Exception e) {
 		}
 	}
 
@@ -47,6 +51,7 @@ public class TeleportControl {
 
 	public TeleportControl(SimpleEssential plugin) {
 		this.plugin = plugin;
+
 	}
 
 	/**
@@ -61,10 +66,9 @@ public class TeleportControl {
 			Player target = ti.getTarget();
 			Location loc = null;
 			if (!target.isOnline()) {
-				player.sendMessage("§c目标玩家已离线 传送失败!");
+				player.sendMessage(Language.getMessage("Teleport.offline"));
 				return;
 			}
-			target.sendMessage("§a玩家: " + player.getDisplayName() + "§a受了您的请求!");
 			if (ti.getTptype() == TeleportType.TPA) {
 				target = ti.getTarget();
 				loc = player.getLocation();
@@ -72,10 +76,12 @@ public class TeleportControl {
 				target = player;
 				loc = ti.getTarget().getLocation();
 			}
+			player.sendMessage(Language.getMessage("Teleport.accept"));
+			target.sendMessage(Language.getMessage("Teleport.acceptfrom"));
 			magicTeleport(target, loc, TpDelay);
 			return;
 		}
-		player.sendMessage("§c未找到需要处理的队列!");
+		player.sendMessage(Language.getMessage("Teleport.none"));
 	}
 
 	/**
@@ -103,7 +109,7 @@ public class TeleportControl {
 		if (loc != null) {
 			magicTeleport(player, loc, 3);
 		} else {
-			player.sendMessage("§c未找到可以Back的地点!");
+			player.sendMessage(Language.getMessage("Teleport.nobackloc"));
 		}
 	}
 
@@ -116,14 +122,14 @@ public class TeleportControl {
 	public void deny(Player player) {
 		TeleportInfo ti = teleportList.remove(player);
 		if (ti != null) {
-			player.sendMessage("§c已拒绝玩家的传送请求!");
 			Player target = ti.getTarget();
 			if (target.isOnline()) {
-				target.sendMessage("§c玩家: " + player.getDisplayName() + "§c拒绝了您的请求!");
+				player.sendMessage(Language.getMessage("Teleport.deny"));
+				target.sendMessage(Language.getMessage("Teleport.denyfrom"));
 			}
 			return;
 		}
-		player.sendMessage("§c未找到需要处理的队列!");
+		player.sendMessage(Language.getMessage("Teleport.none"));
 	}
 
 	/**
@@ -151,8 +157,7 @@ public class TeleportControl {
 	public void magicTeleport(final Player player, final Location loc, final int delay) {
 		int petime = delay * 20 + 10;
 		setLastloc(player, player.getLocation());
-		player.sendMessage("§a传送开始 " + delay + "秒 后到达目的地 §d世界: " + loc.getWorld().getName()
-				+ " §3X: " + loc.getBlockX() + " Z: " + loc.getBlockZ() + "!");
+		player.sendMessage(Language.getMessage("Teleport.tp", delay, loc.getWorld().getName(), loc.getBlockX(), loc.getBlockZ()));
 		List<PotionEffect> pe = new ArrayList<PotionEffect>();
 		pe.add(new PotionEffect(PotionEffectType.SLOW, petime, 255));
 		pe.add(new PotionEffect(PotionEffectType.CONFUSION, petime, 255));

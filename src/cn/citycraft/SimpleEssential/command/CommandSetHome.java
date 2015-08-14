@@ -10,6 +10,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import cn.citycraft.SimpleEssential.SimpleEssential;
+import cn.citycraft.SimpleEssential.config.Language;
 
 /**
  * @author 蒋天蓓 2015年8月12日下午2:04:05 TODO
@@ -31,9 +32,9 @@ public class CommandSetHome extends SimpleEssentialCommand {
 		Block b = p.getLocation().getBlock();
 		if (b.getType() == Material.BED_BLOCK) {
 			p.setBedSpawnLocation(b.getLocation(), true);
-			p.sendMessage("§a家设置成功!");
+			p.sendMessage(Language.getMessage("Teleport.sethomesuccess"));
 		} else {
-			p.sendMessage("§c请站在床上设置家!");
+			p.sendMessage(Language.getMessage("Teleport.sethomeerror"));
 		}
 	}
 

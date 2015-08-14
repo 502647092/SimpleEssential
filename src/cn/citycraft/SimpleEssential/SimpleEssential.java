@@ -23,6 +23,7 @@ import cn.citycraft.SimpleEssential.command.CommandTpdeny;
 import cn.citycraft.SimpleEssential.command.CommandTphere;
 import cn.citycraft.SimpleEssential.command.SimpleEssentialCommand;
 import cn.citycraft.SimpleEssential.config.Config;
+import cn.citycraft.SimpleEssential.config.Language;
 import cn.citycraft.SimpleEssential.listen.PlayerLocationListen;
 import cn.citycraft.SimpleEssential.teleport.TeleportControl;
 import cn.citycraft.SimpleEssential.utils.VersionChecker;
@@ -84,6 +85,7 @@ public class SimpleEssential extends JavaPlugin {
 	@Override
 	public void onLoad() {
 		Config.load(this, "1.0");
+		Language.load(this, "1.0");
 	}
 
 	/**

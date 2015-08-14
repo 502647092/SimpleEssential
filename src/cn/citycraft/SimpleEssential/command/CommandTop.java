@@ -9,6 +9,7 @@ import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 
 import cn.citycraft.SimpleEssential.SimpleEssential;
+import cn.citycraft.SimpleEssential.config.Language;
 
 /**
  * @author 蒋天蓓
@@ -43,6 +44,6 @@ public class CommandTop extends SimpleEssentialCommand {
 		int top = loc.getWorld().getHighestBlockYAt(loc);
 		loc.setY(top);
 		p.teleport(loc);
-		p.sendMessage("&a已传送至当前位置最高方块!");
+		p.sendMessage(Language.getMessage("Teleport.top"));
 	}
 }
