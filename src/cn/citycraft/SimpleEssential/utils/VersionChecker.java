@@ -17,25 +17,48 @@ import org.bukkit.plugin.Plugin;
 
 import com.google.common.base.Charsets;
 
+/**
+ * @author 蒋天蓓
+ *         2015年8月14日下午4:01:15
+ *         自动更新类
+ */
 public class VersionChecker implements Listener {
 	Plugin plugin;
 	public String checkurl = "https://coding.net/u/502647092/p/%s/git/raw/%s/src/plugin.yml";
 	public String branch = "master";
 
+	/**
+	 * @param plugin
+	 *            - 插件
+	 */
 	public VersionChecker(Plugin plugin) {
 		this.plugin = plugin;
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
-		this.VersionCheck(null);
+		this.versioncheck(null);
 	}
 
-	// https://coding.net/u/502647092/p/SimpleEssential/git/raw/master/src/plugin.yml
+	/**
+	 * @param plugin
+	 *            - 插件
+	 * @param branch
+	 *            - 分支名称
+	 */
 	public VersionChecker(Plugin plugin, String branch) {
 		this.plugin = plugin;
 		plugin.getServer().getPluginManager().registerEvents(this, plugin);
 		this.checkurl = branch;
-		this.VersionCheck(null);
+		this.versioncheck(null);
 	}
 
+	/**
+	 * 获取插件更新链接
+	 * 
+	 * @param pluginName
+	 *            - 插件名称
+	 * @param branch
+	 *            - 插件分支
+	 * @return 更新链接
+	 */
 	public String getCheckUrl(String pluginName, String branch) {
 		return String.format(checkurl, pluginName, branch);
 	}
@@ -43,11 +66,17 @@ public class VersionChecker implements Listener {
 	@EventHandler
 	public void onPlayerJoin(PlayerJoinEvent e) {
 		if (e.getPlayer().isOp()) {
-			this.VersionCheck(e.getPlayer());
+			this.versioncheck(e.getPlayer());
 		}
 	}
 
-	public void VersionCheck(final Player player) {
+	/**
+	 * 开始更新
+	 * 
+	 * @param player
+	 *            - 获取更新的玩家(null则默认为控制台)
+	 */
+	public void versioncheck(final Player player) {
 		Bukkit.getScheduler().runTaskAsynchronously(plugin, new Runnable() {
 			@Override
 			public void run() {
