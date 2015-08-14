@@ -24,6 +24,3 @@ Teleport:
   tpaccept: '§a输入命令/tpaccept 或 /tpok 接受传送'
   tpdeny: '§c输入命令/tpdeny 或 /tpno 拒绝传送'
   nobackloc: '§c未找到可以Back的地点!'
-  
-  
-  Language.getMessage("Teleport.none")
