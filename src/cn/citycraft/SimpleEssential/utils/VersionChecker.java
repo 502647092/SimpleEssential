@@ -37,10 +37,6 @@ public class VersionChecker implements Listener {
 	}
 
 	public String getCheckUrl(String pluginName, String branch) {
-		System.out.println(checkurl);
-		System.out.println(pluginName);
-		System.out.println(branch);
-		System.out.println(String.format(checkurl, pluginName, branch));
 		return String.format(checkurl, pluginName, branch);
 	}
 
