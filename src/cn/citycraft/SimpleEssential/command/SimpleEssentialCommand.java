@@ -97,6 +97,8 @@ public abstract class SimpleEssentialCommand {
 
 	/**
 	 * 是否只有玩家才能执行此命令
+	 * 
+	 * @return 是否为玩家命令
 	 */
 	public abstract boolean isOnlyPlayerExecutable();
 
