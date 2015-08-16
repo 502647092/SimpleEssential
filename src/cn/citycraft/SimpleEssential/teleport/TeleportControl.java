@@ -55,8 +55,8 @@ public class TeleportControl {
 				target = player;
 				loc = ti.getTarget().getLocation();
 			}
-			player.sendMessage(Language.getMessage("Teleport.accept"));
-			target.sendMessage(Language.getMessage("Teleport.acceptfrom"));
+			player.sendMessage(Language.getMessage("Teleport.accept", target.getDisplayName()));
+			target.sendMessage(Language.getMessage("Teleport.acceptfrom", player.getDisplayName()));
 			magicTeleport(target, loc, TpDelay);
 			return;
 		}
@@ -103,8 +103,8 @@ public class TeleportControl {
 		if (ti != null) {
 			Player target = ti.getTarget();
 			if (target.isOnline()) {
-				player.sendMessage(Language.getMessage("Teleport.deny"));
-				target.sendMessage(Language.getMessage("Teleport.denyfrom"));
+				player.sendMessage(Language.getMessage("Teleport.deny", target.getDisplayName()));
+				target.sendMessage(Language.getMessage("Teleport.denyfrom", player.getDisplayName()));
 			}
 			return;
 		}
@@ -136,7 +136,8 @@ public class TeleportControl {
 	public void magicTeleport(final Player player, final Location loc, final int delay) {
 		int petime = delay * 20 + 10;
 		setLastloc(player, player.getLocation());
-		player.sendMessage(Language.getMessage("Teleport.tp", delay, loc.getWorld().getName(), loc.getBlockX(), loc.getBlockZ()));
+		player.sendMessage(Language.getMessage("Teleport.tp", delay, loc.getWorld().getName(),
+				loc.getBlockX(), loc.getBlockZ()));
 		List<PotionEffect> pe = new ArrayList<PotionEffect>();
 		pe.add(new PotionEffect(PotionEffectType.SLOW, petime, 255));
 		pe.add(new PotionEffect(PotionEffectType.CONFUSION, petime, 255));
@@ -149,7 +150,8 @@ public class TeleportControl {
 			public void run() {
 				while (System.currentTimeMillis() < timeoutmark) {
 					if (player.isOnline()) {
-						EffectUtil.run(player.getLocation(), lrng, Effect.MOBSPAWNER_FLAMES, Effect.PORTAL);
+						EffectUtil.run(player.getLocation(), lrng, Effect.MOBSPAWNER_FLAMES,
+								Effect.PORTAL);
 					}
 					lrng++;
 					try {
