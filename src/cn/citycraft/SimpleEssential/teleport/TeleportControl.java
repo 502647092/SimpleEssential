@@ -56,8 +56,8 @@ public class TeleportControl {
 				target = player;
 				loc = ti.getTarget().getLocation();
 			}
-			player.sendMessage(TpControlName + Language.getMessage("Teleport.accept"));
-			target.sendMessage(TpControlName + Language.getMessage("Teleport.acceptfrom"));
+			player.sendMessage(TpControlName + Language.getMessage("Teleport.accept", target.getDisplayName()));
+			target.sendMessage(TpControlName + Language.getMessage("Teleport.acceptfrom", player.getDisplayName()));
 			magicTeleport(target, loc, TpDelay);
 			return;
 		}
@@ -104,8 +104,8 @@ public class TeleportControl {
 		if (ti != null) {
 			Player target = ti.getTarget();
 			if (target.isOnline()) {
-				player.sendMessage(TpControlName + Language.getMessage("Teleport.deny"));
-				target.sendMessage(TpControlName + Language.getMessage("Teleport.denyfrom"));
+				player.sendMessage(TpControlName + Language.getMessage("Teleport.deny", target.getDisplayName()));
+				target.sendMessage(TpControlName + Language.getMessage("Teleport.denyfrom", player.getDisplayName()));
 			}
 			return;
 		}
