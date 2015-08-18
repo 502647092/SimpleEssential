@@ -16,7 +16,7 @@ import cn.citycraft.SimpleEssential.SimpleEssential;
  *         2015年8月12日下午2:04:05
  * 
  */
-public class CommandTpaccept extends SimpleEssentialCommand {
+public class CommandTpaccept extends BaseCommand {
 	SimpleEssential plugin;
 
 	/**

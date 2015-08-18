@@ -17,7 +17,7 @@ import cn.citycraft.SimpleEssential.config.Language;
  * 
  * @author 蒋天蓓 2015年8月12日下午2:04:05
  */
-public class CommandSetHome extends SimpleEssentialCommand {
+public class CommandSetHome extends BaseCommand {
 	SimpleEssential plugin;
 
 	public CommandSetHome(SimpleEssential main) {

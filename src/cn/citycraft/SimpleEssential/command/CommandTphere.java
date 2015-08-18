@@ -17,7 +17,7 @@ import cn.citycraft.SimpleEssential.teleport.TeleportType;
  * 
  * @author 蒋天蓓 2015年8月12日下午2:04:05
  */
-public class CommandTphere extends SimpleEssentialCommand {
+public class CommandTphere extends BaseCommand {
 	SimpleEssential plugin;
 
 	public CommandTphere(SimpleEssential main) {

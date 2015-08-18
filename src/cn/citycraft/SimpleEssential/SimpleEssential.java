@@ -13,15 +13,17 @@ import org.bukkit.entity.Player;
 import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import cn.citycraft.SimpleEssential.command.BaseCommand;
 import cn.citycraft.SimpleEssential.command.CommandBack;
+import cn.citycraft.SimpleEssential.command.CommandHat;
 import cn.citycraft.SimpleEssential.command.CommandHome;
 import cn.citycraft.SimpleEssential.command.CommandSetHome;
+import cn.citycraft.SimpleEssential.command.CommandSuicide;
 import cn.citycraft.SimpleEssential.command.CommandTop;
 import cn.citycraft.SimpleEssential.command.CommandTpa;
 import cn.citycraft.SimpleEssential.command.CommandTpaccept;
 import cn.citycraft.SimpleEssential.command.CommandTpdeny;
 import cn.citycraft.SimpleEssential.command.CommandTphere;
-import cn.citycraft.SimpleEssential.command.SimpleEssentialCommand;
 import cn.citycraft.SimpleEssential.config.Config;
 import cn.citycraft.SimpleEssential.config.Language;
 import cn.citycraft.SimpleEssential.listen.PlayerLocationListen;
@@ -42,11 +44,11 @@ public class SimpleEssential extends JavaPlugin {
 	/**
 	 * 命令监听列表
 	 */
-	private List<SimpleEssentialCommand> commandlist;
+	private List<BaseCommand> commandlist;
 
 	@Override
 	public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-		for (SimpleEssentialCommand command : commandlist) {
+		for (BaseCommand command : commandlist) {
 			if (command.isValidTrigger(label)) {
 				if (!command.hasPermission(sender)) {
 					sender.sendMessage(Language.getMessage("Base.no-permission"));
@@ -98,7 +100,7 @@ public class SimpleEssential extends JavaPlugin {
 	 * 注册命令
 	 */
 	public void registerCommands() {
-		commandlist = new ArrayList<SimpleEssentialCommand>();
+		commandlist = new ArrayList<BaseCommand>();
 		registerCommand(new CommandTpa(this));
 		registerCommand(new CommandTop(this));
 		registerCommand(new CommandTpaccept(this));
@@ -107,7 +109,8 @@ public class SimpleEssential extends JavaPlugin {
 		registerCommand(new CommandBack(this));
 		registerCommand(new CommandSetHome(this));
 		registerCommand(new CommandHome(this));
-
+		registerCommand(new CommandHat(this));
+		registerCommand(new CommandSuicide(this));
 	}
 
 	/**
@@ -116,7 +119,7 @@ public class SimpleEssential extends JavaPlugin {
 	 * @param command
 	 *            - 被注册的命令类
 	 */
-	public void registerCommand(SimpleEssentialCommand command) {
+	public void registerCommand(BaseCommand command) {
 		commandlist.add(command);
 	}
 

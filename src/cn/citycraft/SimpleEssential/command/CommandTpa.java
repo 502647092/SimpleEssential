@@ -19,7 +19,7 @@ import cn.citycraft.SimpleEssential.teleport.TeleportType;
  *         2015年8月12日下午2:04:05
  *
  */
-public class CommandTpa extends SimpleEssentialCommand {
+public class CommandTpa extends BaseCommand {
 	SimpleEssential plugin;
 
 	/**

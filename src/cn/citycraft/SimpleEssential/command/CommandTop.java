@@ -18,7 +18,7 @@ import cn.citycraft.SimpleEssential.config.Language;
  *         2015年8月12日下午2:04:05
  * 
  */
-public class CommandTop extends SimpleEssentialCommand {
+public class CommandTop extends BaseCommand {
 	SimpleEssential plugin;
 
 	/**

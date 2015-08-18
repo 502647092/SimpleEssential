@@ -12,16 +12,16 @@ import org.bukkit.command.CommandSender;
  * @author 蒋天蓓
  *         2015年8月12日下午12:49:34
  */
-public abstract class SimpleEssentialCommand {
+public abstract class BaseCommand {
 	private String name;
 	private String permission;
 	private String[] aliases;
 
-	public SimpleEssentialCommand(String name) {
+	public BaseCommand(String name) {
 		this(name, new String[0]);
 	}
 
-	public SimpleEssentialCommand(String name, String... aliases) {
+	public BaseCommand(String name, String... aliases) {
 		this.name = name;
 		this.aliases = aliases;
 	}

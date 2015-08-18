@@ -9,7 +9,7 @@ public class Config extends ConfigLoader {
 	private static String CONFIG_NAME = "config.yml";
 	private static FileConfig instance;
 	private static File file;
-	
+
 	public Config(Plugin p) {
 		super(p, CONFIG_NAME);
 		file = new File(p.getDataFolder(), CONFIG_NAME);
@@ -20,7 +20,7 @@ public class Config extends ConfigLoader {
 		super(p, CONFIG_NAME, ver);
 		instance = super.getInstance();
 	}
-	
+
 	public static void load(Plugin p) {
 		new Config(p);
 	}
@@ -28,14 +28,14 @@ public class Config extends ConfigLoader {
 	public static void load(Plugin p, String ver) {
 		new Config(p, ver);
 	}
-	
+
 	public static FileConfig getInstance() {
 		return instance;
 	}
 
 	public static String getMessage(String path) {
 		String message = instance.getString(path);
-		if (message != null)
+		if (message != null && message.length() != 0)
 			message = message.replaceAll("&", "§");
 		return message;
 	}
@@ -43,8 +43,8 @@ public class Config extends ConfigLoader {
 	public static String[] getStringArray(String path) {
 		return instance.getStringList(path).toArray(new String[0]);
 	}
-	
-	public static void save(){
+
+	public static void save() {
 		try {
 			instance.save(file);
 		} catch (IOException e) {

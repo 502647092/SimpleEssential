@@ -45,7 +45,7 @@ public class Language extends ConfigLoader {
 
 	public static String getMessage(String path) {
 		String message = instance.getString(path);
-		if (message != null)
+		if (message != null && message.length() != 0)
 			message = message.replaceAll("&", "§");
 		return message;
 	}

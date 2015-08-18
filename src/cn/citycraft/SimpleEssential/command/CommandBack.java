@@ -12,7 +12,7 @@ import cn.citycraft.SimpleEssential.SimpleEssential;
 /**
  * @author 蒋天蓓 2015年8月12日下午2:04:05
  */
-public class CommandBack extends SimpleEssentialCommand {
+public class CommandBack extends BaseCommand {
 	SimpleEssential plugin;
 
 	/**

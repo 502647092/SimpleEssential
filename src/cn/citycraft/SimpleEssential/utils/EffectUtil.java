@@ -14,13 +14,16 @@ import org.bukkit.Location;
  * 
  */
 public class EffectUtil {
+
 	/**
 	 * 粒子发生器
-	 *
+	 * 
 	 * @param loc
-	 *            - 粒子产生的地点
+	 *            - 粒子产生地点
 	 * @param range
-	 *            - 粒子的数量
+	 *            - 粒子产生数量
+	 * @param effects
+	 *            - 粒子类型
 	 */
 	public static void run(Location loc, long range, Effect... effects) {
 		try {
