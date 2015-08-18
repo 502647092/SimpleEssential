@@ -14,7 +14,6 @@ import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 
 import cn.citycraft.SimpleEssential.SimpleEssential;
-import cn.citycraft.SimpleEssential.config.Config;
 import cn.citycraft.SimpleEssential.config.Language;
 import cn.citycraft.SimpleEssential.utils.EffectUtil;
 
@@ -26,11 +25,13 @@ public class TeleportControl {
 	protected HashMap<Player, Location> lastlocList = new HashMap<Player, Location>();
 	private SimpleEssential plugin;
 
-	private int TpDelay = Config.getInstance().getInt("Teleport.delay", 3);
+	private int TpDelay = 0;
+	private String TpControlName = "";
 
-	public TeleportControl(SimpleEssential plugin) {
+	public TeleportControl(SimpleEssential plugin, String tpcontrolname, int tpdelay) {
 		this.plugin = plugin;
-
+		this.TpDelay = tpdelay;
+		this.TpControlName = tpcontrolname;
 	}
 
 	/**
@@ -45,7 +46,7 @@ public class TeleportControl {
 			Player target = ti.getTarget();
 			Location loc = null;
 			if (!target.isOnline()) {
-				player.sendMessage(Language.getMessage("Teleport.offline"));
+				player.sendMessage(TpControlName + Language.getMessage("Teleport.offline"));
 				return;
 			}
 			if (ti.getTptype() == TeleportType.TPA) {
@@ -55,12 +56,12 @@ public class TeleportControl {
 				target = player;
 				loc = ti.getTarget().getLocation();
 			}
-			player.sendMessage(Language.getMessage("Teleport.accept"));
-			target.sendMessage(Language.getMessage("Teleport.acceptfrom"));
+			player.sendMessage(TpControlName + Language.getMessage("Teleport.accept"));
+			target.sendMessage(TpControlName + Language.getMessage("Teleport.acceptfrom"));
 			magicTeleport(target, loc, TpDelay);
 			return;
 		}
-		player.sendMessage(Language.getMessage("Teleport.none"));
+		player.sendMessage(TpControlName + Language.getMessage("Teleport.none"));
 	}
 
 	/**
@@ -88,7 +89,7 @@ public class TeleportControl {
 		if (loc != null) {
 			magicTeleport(player, loc, 3);
 		} else {
-			player.sendMessage(Language.getMessage("Teleport.nobackloc"));
+			player.sendMessage(TpControlName + Language.getMessage("Teleport.nobackloc"));
 		}
 	}
 
@@ -103,12 +104,12 @@ public class TeleportControl {
 		if (ti != null) {
 			Player target = ti.getTarget();
 			if (target.isOnline()) {
-				player.sendMessage(Language.getMessage("Teleport.deny"));
-				target.sendMessage(Language.getMessage("Teleport.denyfrom"));
+				player.sendMessage(TpControlName + Language.getMessage("Teleport.deny"));
+				target.sendMessage(TpControlName + Language.getMessage("Teleport.denyfrom"));
 			}
 			return;
 		}
-		player.sendMessage(Language.getMessage("Teleport.none"));
+		player.sendMessage(TpControlName + Language.getMessage("Teleport.none"));
 	}
 
 	/**
@@ -136,7 +137,7 @@ public class TeleportControl {
 	public void magicTeleport(final Player player, final Location loc, final int delay) {
 		int petime = delay * 20 + 10;
 		setLastloc(player, player.getLocation());
-		player.sendMessage(Language.getMessage("Teleport.tp", delay, loc.getWorld().getName(), loc.getBlockX(), loc.getBlockZ()));
+		player.sendMessage(TpControlName + Language.getMessage("Teleport.tp", delay, loc.getWorld().getName(), loc.getBlockX(), loc.getBlockZ()));
 		List<PotionEffect> pe = new ArrayList<PotionEffect>();
 		pe.add(new PotionEffect(PotionEffectType.SLOW, petime, 255));
 		pe.add(new PotionEffect(PotionEffectType.CONFUSION, petime, 255));

@@ -26,7 +26,7 @@ Teleport:
   nobackloc: '§c未找到可以Back的地点!'
 #自杀
 Suicide:
-  msg: '§6玩家: %s §c活不下去自杀了！'
+  msg: '§6玩家: §a%s §d活不下去 - §c自杀了！'
 #帽子
 Hat:
   empty: '§c看上去你手上什么都没有啊！'

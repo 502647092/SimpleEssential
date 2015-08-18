@@ -77,10 +77,16 @@ public class SimpleEssential extends JavaPlugin {
 
 	@Override
 	public void onEnable() {
-		tpcontrol = new TeleportControl(this);
+		this.initTeleportControl();
 		this.registerCommands();
 		this.registerEvents();
 		new VersionChecker(this);
+	}
+
+	private void initTeleportControl() {
+		int tpdelay = Config.getInstance().getInt("Teleport.delay", 3);
+		String tpcontorlname = Config.getMessage("Teleport.name");
+		tpcontrol = new TeleportControl(this, tpcontorlname, tpdelay);
 	}
 
 	/**

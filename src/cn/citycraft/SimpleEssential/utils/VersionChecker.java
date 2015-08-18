@@ -18,9 +18,10 @@ import org.bukkit.plugin.Plugin;
 import com.google.common.base.Charsets;
 
 /**
+ * 自动更新类
+ * 
  * @author 蒋天蓓
  *         2015年8月14日下午4:01:15
- *         自动更新类
  */
 public class VersionChecker implements Listener {
 	Plugin plugin;
